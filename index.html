@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Periodic Table</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+        }
+        h1 { color: #333; }
+        p { color: #666; margin-bottom: 20px; }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div id="login-card">
+        <h1>Welcome Back</h1>
+        <p>Sign in to access the visualization.</p>
+        <div id="g_id_onload"
+             data-client_id="417350302111-aei66uk5ark9lmu9q40crtdv2ph8isab.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+    </div>
+
+    <script>
+        // Use the Token Model for accessing Sheet Data
+        function handleCredentialResponse(response) {
+            // This handles the ID token (login), but for Sheets we need an Access Token.
+            // We initiate the OAuth flow for the Sheet scope:
+            const client = google.accounts.oauth2.initTokenClient({
+                client_id: '417350302111-aei66uk5ark9lmu9q40crtdv2ph8isab.apps.googleusercontent.com',
+                scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+                callback: (tokenResponse) => {
+                    if (tokenResponse.access_token) {
+                        localStorage.setItem('accessToken', tokenResponse.access_token);
+                        window.location.href = 'app.html'; // Redirect to app
+                    }
+                },
+            });
+            client.requestAccessToken();
+        }
+    </script>
+</body>
+</html>
