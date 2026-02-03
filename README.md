@@ -40,21 +40,3 @@ An interactive web application that transforms raw CSV data from Google Sheets i
     * Right-click `index.html` and select **"Open with Live Server"**.
     * *Note: This project requires a local server to handle CORS and Google Auth policies.*
 
-## 📸 Screenshots
-
-| Table Layout | Sphere Layout |
-| :---: | :---: |
-| *(Upload your screenshot here)* | *(Upload your screenshot here)* |
-
-| Double Helix | 3D Grid |
-| :---: | :---: |
-| *(Upload your screenshot here)* | *(Upload your screenshot here)* |
-
-## 👨‍💻 Author
-
-**Your Name**
-* [LinkedIn](https://linkedin.com/in/yourprofile)
-* [GitHub](https://github.com/yourusername)
-
----
-*This project was created as part of a Web Visualization Assessment.*
